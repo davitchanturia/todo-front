@@ -6,6 +6,7 @@ const Navbar = () => {
       <div className='w-full max-w-7xl mx-auto flex justify-between'>
         <div className='capitalize'>todo app</div>
         <ul className='w-2/3 flex justify-end px-16'>
+          <NavbarItem item='main' />
           <NavbarItem item='todos' />
           <NavbarItem item='notes' />
         </ul>
