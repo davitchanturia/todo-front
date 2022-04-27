@@ -4,7 +4,7 @@ const MainContainer = () => {
   return (
     <div className='w-full'>
       <div className='max-w-7xl mx-auto flex justify-between mt-11'>
-        <ContainerLine name='todo' />
+        <ContainerLine name='to do' />
         <ContainerLine name='in progress' />
         <ContainerLine name='done' />
       </div>

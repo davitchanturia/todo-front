@@ -1,5 +1,14 @@
+import Grid from 'components/notes/Grid';
+
 const Home = () => {
-  return <div>welcome to home page</div>;
+  return (
+    <div>
+      <div className='w-full max-w-7xl mx-auto mt-11'>
+        <p>Here you can see your the most important todos.</p>
+        <Grid />
+      </div>
+    </div>
+  );
 };
 
 export default Home;
