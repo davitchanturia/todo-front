@@ -6,9 +6,9 @@ const ContainerLine = (props) => {
       <div className='w-11/12 border rounded-lg border-black  pt-5'>
         <h1 className='text-center capitalize'>{props.name}</h1>
         <ul className='px-9 pb-5 h-152 overflow-auto'>
-          <TodoItem />
-          <TodoItem />
-          <TodoItem />
+          {props.data.map((element) => (
+            <TodoItem title={element.title} />
+          ))}
         </ul>
       </div>
     </div>

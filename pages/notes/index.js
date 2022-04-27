@@ -13,12 +13,13 @@ const Notes = (props) => {
 };
 
 export const getStaticProps = async () => {
-  const data = await sendRequest();
+  const data = await sendRequest(`/api/notes`);
 
   return {
     props: {
-      data: data
-    }
+      data: data.allNotes
+    },
+    revalidate: 10
   }
 };
 
