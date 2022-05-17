@@ -8,7 +8,7 @@ const ContainerLine = (props) => {
         <h1 className='text-center capitalize'>{props.name}</h1>
         <ul className='px-9 pb-5 h-152 overflow-auto'>
           {props.data.map((element) => (
-            <TodoItem key={element.id} title={element.title} />
+            <TodoItem key={element.id} id={element.id} title={element.title} />
           ))}
         </ul>
       </div>
