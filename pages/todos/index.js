@@ -1,24 +1,23 @@
+import { useState } from 'react';
 import Button from 'components/shared/Button';
+import Modal from 'components/shared/Modal';
 import MainContainer from 'components/todos/MainContainer';
 import sendRequest from 'lib/sendRequest';
 
-const test = async() => {
-  const path = `/api/todo/1`;
-
-  const todoData = await sendRequest(path);
-
-  console.log(todoData);
-};
-
 const Todos = (props) => {
+  const [showModal, setShowModal] = useState(false);
+
   const { done, inProgress, todo } = props;
 
-  test();
+  const showModalHandler = () => {
+    setShowModal(!showModal);
+  };
 
   return (
     <div className='w-full max-w-7xl mx-auto '>
-      <Button action='create' />
+      <Button action='create' onCreate={showModalHandler}/>
       <MainContainer done={done} inProgress={inProgress} todo={todo} />
+      {showModal && <Modal onCancel={showModalHandler} />}
     </div>
   );
 };
