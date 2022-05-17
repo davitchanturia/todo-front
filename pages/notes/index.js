@@ -7,7 +7,7 @@ const Notes = (props) => {
   return (
     <div className='w-full max-w-7xl mx-auto '>
       <Button action='create' />
-      <Grid data={props.data}/>
+      <Grid for='notes' data={props.data}/>
     </div>
   );
 };

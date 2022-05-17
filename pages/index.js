@@ -6,7 +6,7 @@ const Home = (props) => {
     <div>
       <div className='w-full max-w-7xl mx-auto mt-11'>
         <p>Here you can see your the most important todos.</p>
-        <Grid data={props.importantTodos} />
+        <Grid for='todo' data={props.importantTodos} />
       </div>
     </div>
   );
