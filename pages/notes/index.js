@@ -15,7 +15,7 @@ const Notes = (props) => {
     <div className='w-full max-w-7xl mx-auto '>
       <Button action='create' onCreate={showModalHandler}/>
       <Grid for='notes' data={props.data}/>
-      {showModal && <Modal onCancel={showModalHandler} />}
+      {showModal && <Modal onCancel={showModalHandler} todos={props.todos}/>}
     </div>
   );
 };
@@ -25,7 +25,8 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      data: data.allNotes
+      data: data.allNotes,
+      todos: data.allTodos
     },
     revalidate: 10
   }

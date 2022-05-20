@@ -1,25 +1,37 @@
 import { useForm } from "react-hook-form";
 import Input from "components/shared/Input";
 import { postRequest } from "lib/sendRequest";
+import { useRouter } from "next/router";
 
 const Modal = (props) => {
     const { register, handleSubmit, getValues } = useForm();
+
+    const router = useRouter();
+
+    const todosDropdown = router.pathname === '/notes' 
+        ?   <select {...register('todo_id')} className='mt-4 bg-slate-300  block w-full p-2 rounded-md'>
+                {props.todos.map((todo) => {
+                    return <option key={todo.id} value={todo.id}>{todo.title}</option>
+                })}
+            </select>
+        : '';
 
     const onSubmitHandler = (data, e) => {
         e.preventDefault();
         
         const title = getValues('title');
         const body = getValues('body');
+        const relevantTodo = getValues('todo_id');
 
         const inputData = {
             title: title,
             body: body,
+            todoId: relevantTodo
         };
 
         if(title && body){
             postRequest('api/add-todo', inputData);
         }
-
     };
 
     return (
@@ -33,7 +45,7 @@ const Modal = (props) => {
                     <form onSubmit={handleSubmit(onSubmitHandler)}>
                         <Input forInput='title' register={register} required />
                         <Input forInput='body' register={register} required />
-                        {/* <input {...register("firstName")} /> */}
+                        {todosDropdown}
                         <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                             <button onClick={props.onAction} type='submit' className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-orange-600 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">
                                 Create
