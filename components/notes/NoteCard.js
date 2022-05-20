@@ -6,7 +6,6 @@ const NoteCard = (props) => {
 
   let starButton;
 
-  console.log(props);
   if(props.for === 'todo'){
      starButton = (
         <button className='absolute top-2 right-2'>
