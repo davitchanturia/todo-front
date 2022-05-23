@@ -8,6 +8,7 @@ const Modal = (props) => {
 
     const router = useRouter();
 
+
     const todosDropdown = router.pathname === '/notes' 
         ?   <select {...register('todo_id')} className='mt-4 bg-slate-300  block w-full p-2 rounded-md'>
                 {props.todos.map((todo) => {
@@ -29,8 +30,14 @@ const Modal = (props) => {
             todoId: relevantTodo
         };
 
-        if(title && body){
-            postRequest('api/add-todo', inputData);
+        if(props.todos){
+            if(title && body){
+                postRequest('api/add-note', inputData);
+            }
+        }else{
+            if(title && body){
+                postRequest('api/add-todo', inputData);
+            }
         }
     };
 
